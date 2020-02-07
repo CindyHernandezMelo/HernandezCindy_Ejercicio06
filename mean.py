@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 x = np.array([4.6, 6.0, 2.0, 5.8])
 sigma = np.array([2.0, 1.5, 5.0, 1.0])
 
-Nmu = 1000
+Nmu = 100
 mu = np.linspace(0,10,Nmu)
 
 p_xk_mu = np.zeros([np.shape(x)[0],Nmu])
@@ -21,7 +21,7 @@ arg_max = np.argmax(L)
 
 d2L_dmu2 = (L[arg_max+1] - 2*L[arg_max] + L[arg_max-1]) / ((mu[1]-mu[0])**2)
 
-plt.plot(mu,p_mu_kx)
+plt.plot(mu,p_mu_kx/(np.sum(p_mu_kx)*((mu[1]-mu[0]))))
 plt.title('$\mu $= %f  $\pm$ %f'%(mu[arg_max],(-d2L_dmu2)**(-0.5)) )
 plt.savefig('mean.pdf')
 
